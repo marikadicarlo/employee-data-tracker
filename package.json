@@ -3,5 +3,26 @@
     "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
     "mysql2": "^2.3.3"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "employee-data-tracker",
+  "description": "[Click Here Video]() ![employee-data-tracker]()",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marikadicarlo/employee-data-tracker.git"
+  },
+  "keywords": [
+    "employee"
+  ],
+  "author": "Marika Di Carlo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marikadicarlo/employee-data-tracker/issues"
+  },
+  "homepage": "https://github.com/marikadicarlo/employee-data-tracker#readme"
 }
