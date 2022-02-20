@@ -75,32 +75,31 @@ const initialPrompt = () => {
 }
 
 // View All Employees function
-const viewAllEmployees = () => {
-    // Connect to query
-    connection.query(
-        `
-        SELECT
-        employee.id,
-        employee.first_name AS "First Name",
-        employee.last_name AS "Last Name",
-        role.title AS "Title",
-        department.name AS "Department",
-        role.salary AS "Salary",
-        CONCAT(e.first_name, " ", e.last_name) AS "Manager
-        FROM employee
-        INNER JOIN role ON employee.role_id = role.id
-        LEFT JOIN department ON role.department_id = department.id
-        LEFT JOIN employee e ON employee.manager_id = e.id
-        ORDER BY employee.id;
-        `,
-        (err, res) => {
-            if (err) throw err;
-            // Display query results using console.table
-            console.table(res);
-            initialPrompt();
-        }
-    )};
+const viewAllEmployees = (table) => {
+  // const query = `SELECT * FROM ${table}`;
+  let query;
+  if (table === "department") {
+    query = `SELECT * FROM department`;
+  } else if (table === "ROLE") {
+    query = `SELECT R.id AS id, title, salary, D.name AS department
+    FROM ROLE AS R LEFT JOIN DEPARTMENT AS D
+    ON R.department_id = D.id;`;
+  } else {
+    //employee
+    query = `SELECT E.id AS id, E.first_name AS first_name, E.last_name AS last_name, 
+    R.title AS role, D.name AS department, CONCAT(M.first_name, " ", M.last_name) AS manager
+    FROM EMPLOYEE AS E LEFT JOIN ROLE AS R ON E.role_id = R.id
+    LEFT JOIN DEPARTMENT AS D ON R.department_id = D.id
+    LEFT JOIN EMPLOYEE AS M ON E.manager_id = M.id;`;
+  }
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
 
+    initialPrompt();
+  });
+};
+    
 
 // View All Roles function
 const viewAllRoles = () => {
@@ -289,13 +288,11 @@ const roleArray = [];
                     console.log('You have succesfully updated the role')
                     initialPrompt();
                   }
-                  )
-                }
                 )
-              }
-            );
-          }
+            }
         )
-        }
-      )
-      }
+    }
+);
+})
+})
+};
