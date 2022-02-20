@@ -75,6 +75,7 @@ const initialPrompt = () =>
 
 // View All Employees function
 const viewAllEmployees = () => {
+    // Connect to query
     connection.query(
         `
         SELECT
@@ -104,7 +105,18 @@ const viewAllEmployees = () => {
 
 
 // View All Departments
-
+const viewAllDepartments = () => {
+    // Connect to query
+    connection.query(
+        "SELECT id, name AS department FROM department",
+        (err, res) => {
+            if (err) throw err;
+            // Display query results using console.table
+            console.table(res);
+            initialPrompt();
+        }
+    );
+};
 
 
 // Add Employee
