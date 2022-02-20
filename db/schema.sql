@@ -4,24 +4,21 @@ CREATE DATABASE employee_data_trackerDB;
 USE employee_data_trackerDB;
 
 CREATE TABLE department (
-    id INT AUTO_INCREMENT,
-    name VARCHAR(45) NOT NULL,
-    PRIMARY KEY (id)
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (
-    id INT AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
-    salary DECIMAL,
-    department_id INT,
-    PRIMARY KEY (id)
+    salary DECIMAL NULL,
+    department_id INT NOT NULL
 );
 
 CREATE TABLE employee (
-    id INT AUTO_INCREMENT,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
-    role_id INT,
-    manager_id INT,
-    PRIMARY KEY (id)
+    role_id INT NOT NULL,
+    manager_id INT NULL
 );

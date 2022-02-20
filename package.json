@@ -2,6 +2,7 @@
   "dependencies": {
     "console.table": "^0.10.0",
     "inquirer": "^8.2.0",
+    "mysql": "^2.18.1",
     "mysql2": "^2.3.3"
   },
   "scripts": {
@@ -11,7 +12,6 @@
   "description": "[Click Here Video]() ![employee-data-tracker]()",
   "version": "1.0.0",
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marikadicarlo/employee-data-tracker.git"
