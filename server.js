@@ -140,6 +140,44 @@ const viewAllDepartments = () => {
 
 
 // Add Employee function
+const addEmployee = () => {
+    inquierer.prompt([
+        {
+            type: "input",
+            name: "employeeFirstName",
+            message: "Enter the first name of the new employee:",
+        },
+        {
+            type: "input",
+            name: "employeeLastName",
+            message: "Enter the last name of the new employee:",
+        },
+        {
+            type: "input",
+            name: "employeeRole",
+            message: "Enter Role ID of the new employee:",
+        },
+        {
+            type: "input",
+            name: "employeeManagerId",
+            message: "Enter Manager ID of the new employee:",
+        },
+    ]).then(answer => {
+        connection.query(
+            "INSERT INTO employee SET ?",
+            {
+                first_name: answer.employeeFirstName,
+                last_name: answer.employeeLastName,
+                role_id: answer.employeeRole,
+                manager_id: answer.employeeManagerId,
+            },
+            function(err, res) {
+                if (err) throw err;
+                console.log(`You have entered ${answer.employeeFirstName} ${answer.employeeLastName} to the database.`);
+                initialPrompt();
+            }
+        );
+    });
 
 // Add Role
 
