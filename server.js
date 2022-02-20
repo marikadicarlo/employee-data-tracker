@@ -19,7 +19,7 @@ connection.connect(function(err) {
 });
 
 // Initial Prompt for User
-const initialPrompt = () =>
+const initialPrompt = () => {
     inquierer.prompt([
         {
             type: "list",
@@ -72,6 +72,7 @@ const initialPrompt = () =>
             break;
         }
     });
+}
 
 // View All Employees function
 const viewAllEmployees = () => {
@@ -178,9 +179,123 @@ const addEmployee = () => {
             }
         );
     });
+};
 
 // Add Role
+const addRole = () =>
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'addRole',
+        message: 'What role would you like to add?',
+      },
+      {
+        type: 'input',
+        name: 'roleSalary',
+        message: 'What is the salary for this role?',
+      },
+      {
+        type: 'input',
+        name: 'departmentId',
+        message: "What is this role's department id?"
+      }
+    ]).then(answer => {
+      connection.query(
+        'INSERT INTO role SET ?',
+        {
+          title: answer.addRole,
+          salary: answer.roleSalary,
+          department_id: answer.departmentId,
+        },
+        function(err, res) {
+          if (err) throw err;
+          console.log(
+            `You have entered ${answer.addRole} to your database.`
+          )
+          initialPrompt();
+        }
+      );
+    });
 
 // Add Department
+const addDepartment = () =>
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'departmentName',
+        message: 'What department would you like to add?',
+      },
+    ]).then(answer => {
+      connection.query(
+        'INSERT INTO department (name) VALUES (?)',
+        answer.departmentName,
+        function(err, res) {
+          if (err) throw err;
+          console.log(
+            `You have entered ${answer.departmentName} to the database.`
+          );
+          initialPrompt()
+        }
+      );
+    });
 
 // Update Employee Role function
+const updateEmployeeRole = () => {
+const employeeArray = [];
+const roleArray = [];
+    connection.query(
+        `SELECT CONCAT (employee.first_name, ' ', employee.last_name) as employee FROM employee_data_trackerDB.employee`,
+        (err, res) => {
+          if(err) throw err;
+          for (let i=0; i< res.length; i++) {
+            employeeArray.push(res[i].employee);
+          }
+          connection.query(
+            `SELECT title FROM employee_data_trackerDB.role`,
+            (err, res) => {
+              if(err) throw err;
+              for (let i=0; i< res.length; i++) {
+                roleArray.push(res[i].title);
+              }
+              inquirer.prompt([
+                {
+                  type: 'list',
+                  name: 'name',
+                  message: "Who's role would you like to change?",
+                  choices: employeeArray,
+                },
+                {
+                  type: 'list',
+                  name: 'role',
+                  message: 'What would you like to change their role to?',
+                  choices: roleArray,
+                }
+              ]).then(answers => {
+                let currentRole;
+                const name = answers.name.split(' ');
+                connection.query(
+                  `SELECT id FROM employee_data_trackerDB.role WHERE title = '${answers.role}'`,
+                
+                (err, res) => {
+                  if(err) throw err;
+                  for (let i=0; i<res.length; i++){
+                    currentRole = res[i].id;
+                  }
+                  connection.query(
+                    `UPDATE employee_data_trackerDB.employee SET role_id = '${currentRole}' WHERE first_name = '${name[0]}'`,
+                  
+                  (err,res) => {
+                    if (err) throw err;
+                    console.log('You have succesfully updated the role')
+                    initialPrompt();
+                  }
+                  )
+                }
+                )
+              }
+            );
+          }
+        )
+        }
+      )
+      }
