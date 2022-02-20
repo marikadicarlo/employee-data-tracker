@@ -4,7 +4,8 @@
 ![employee-data-tracker]()
 
 # Description
-
+This application is a command-line application that allows the user to manage a company's employee database, using Node.js, Inquirer, and MySQL. 
+This application is not meant to be deployed, so there is a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met.
 
 ## User Story
 ```
@@ -40,10 +41,12 @@ THEN I am prompted to select an employee to update and their new role and this i
 - [Questions](#Questions)
 
 ## Installation
-CLone the repository to your local development environment <br />
+`npm init` <br />
+`npm install inquirer` <br />
+`npm install mysql2` <br />
+`npm install console-table` <br />
 ``
-
-Run `npm install` to install dependencies. To use the application locally, run `node server.js` in your CLI, and then open `http://localhost:3001` in your preferred browswer. 
+Run `npm install` to install dependencies. To use the application locally, run `node server.js`. 
 
 
 ## Links

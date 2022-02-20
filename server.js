@@ -2,6 +2,7 @@
 const mysql = require("mysql2");
 const table = require("console.table");
 const inquierer = require("inquirer");
+const { DEC8_BIN } = require("mysql/lib/protocol/constants/charsets");
 
 // Connect to SQL database
 const connection = mysql.createConnection({
@@ -107,7 +108,13 @@ const viewAllEmployees = (table) => {
 
 
 // View All Departments
-// Enter code here
+const viewAllDepartments = () => {
+  connection.query(`SELECT * FROM department`, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    initialPrompt();
+  });
+};
 
 
 
