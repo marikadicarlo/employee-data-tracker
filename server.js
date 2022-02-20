@@ -73,20 +73,44 @@ const initialPrompt = () =>
         }
     });
 
-    // View All Employees function
+// View All Employees function
+const viewAllEmployees = () => {
+    connection.query(
+        `
+        SELECT
+        employee.id,
+        employee.first_name AS "First Name",
+        employee.last_name AS "Last Name",
+        role.title AS "Title",
+        department.name AS "Department",
+        role.salary AS "Salary",
+        CONCAT(e.first_name, " ", e.last_name) AS "Manager
+        FROM employee
+        INNER JOIN role ON employee.role_id = role.id
+        LEFT JOIN department ON role.department_id = department.id
+        LEFT JOIN employee e ON employee.manager_id = e.id
+        ORDER BY employee.id;
+        `,
+        (err, res) => {
+            if (err) throw err;
+            // Display query results using console.table
+            console.table(res);
+            initialPrompt();
+        }
+    )};
 
 
-    // View All Roles function
+// View All Roles function
 
 
-    // View All Departments
+// View All Departments
 
-    // Add Employee
 
-    // Add Role
 
-    // Add Department
+// Add Employee
 
-    // Update Employee Role function
+// Add Role
 
-    //
+// Add Department
+
+// Update Employee Role function
