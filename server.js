@@ -100,7 +100,6 @@ const viewAllEmployees = (table) => {
   });
 };
     
-
 // View All Roles function
 const viewAllRoles = (table) => {
     // Connect to query
@@ -308,7 +307,7 @@ const addDepartment = () => {
 // Update Employee Role function
 const updateEmployeeRole = () => {
   //get all the employee list
-  connection.query("SELECT * FROM EMPLOYEE", (err, emplRes) => {
+  connection.query("SELECT * FROM employee", (err, emplRes) => {
     if (err) throw err;
     const employeeChoice = [];
     emplRes.forEach(({ first_name, last_name, id }) => {
@@ -319,7 +318,7 @@ const updateEmployeeRole = () => {
     });
 
     //get all the role list to make choice of employee's role
-    connection.query("SELECT * FROM ROLE", (err, rolRes) => {
+    connection.query("SELECT * FROM role", (err, rolRes) => {
       if (err) throw err;
       const roleChoice = [];
       rolRes.forEach(({ title, id }) => {
@@ -354,7 +353,7 @@ const updateEmployeeRole = () => {
             (err, res) => {
               if (err) throw err;
 
-              console.log("successfully updated employee's role!");
+              console.log("Successfully updated employee's role!");
               initialPrompt();
             }
           );
