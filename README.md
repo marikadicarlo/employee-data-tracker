@@ -38,6 +38,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Table of Contents
 - [Installation](#Installation)
 - [Links](#Links)
+- [Issues](#Issues)
 - [Questions](#Questions)
 
 ## Installation
@@ -48,11 +49,12 @@ THEN I am prompted to select an employee to update and their new role and this i
 ``
 Run `npm install` to install dependencies. To use the application locally, run `node server.js`. 
 
-
 ## Links
-[Link to the Deployed Site]() <br />
 [Link to the GitHub Repository]()
 
+## Issues
+Unfortunately, I ran into two major issues while creating this application. I am not able to deploy the viewAllRoles() or viewAllDepartments(). 
+All other functions work properly, and I am still working on fixing these issues, and will update this application when I have solved the issue.
 
 ## Questions
 Contact me with any questions at <mdicarlo19@yahoo.com> or [visit my GitHub page](https://github.com/marikadicarlo)
