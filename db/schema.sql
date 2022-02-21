@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS employee_data_trackerDB;
-CREATE DATABASE IF NOT EXISTS employee_data_trackerDB;
+CREATE DATABASE employee_data_trackerDB;
 
 USE employee_data_trackerDB;
 

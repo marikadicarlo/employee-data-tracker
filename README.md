@@ -1,11 +1,12 @@
 # employee-data-tracker
 
-[Click Here Video]()
 ![employee-data-tracker]()
 
 # Description
 This application is a command-line application that allows the user to manage a company's employee database, using Node.js, Inquirer, and MySQL. 
-This application is not meant to be deployed, so there is a walkthrough video that demonstrates its functionality and all of the following acceptance criteria being met.
+This application is not meant to be deployed, so there is a walkthrough video that demonstrates its functionality.
+Unfortunately, I ran into three major issues while creating this application. I am not able to deploy viewAllEmployees(), viewAllRoles() and viewAllDepartments(). 
+All other functions work properly, and I am still working on fixing these issues, and will update this application when I have solved the issue.
 
 ## User Story
 ```
@@ -38,7 +39,6 @@ THEN I am prompted to select an employee to update and their new role and this i
 ## Table of Contents
 - [Installation](#Installation)
 - [Links](#Links)
-- [Issues](#Issues)
 - [Questions](#Questions)
 
 ## Installation
@@ -46,15 +46,12 @@ THEN I am prompted to select an employee to update and their new role and this i
 `npm install inquirer` <br />
 `npm install mysql2` <br />
 `npm install console-table` <br />
-``
-Run `npm install` to install dependencies. To use the application locally, run `node server.js`. 
+
+Run `npm install` to install dependencies. To use the application locally, run `node server.js`
 
 ## Links
-[Link to the GitHub Repository]()
-
-## Issues
-Unfortunately, I ran into two major issues while creating this application. I am not able to deploy the viewAllRoles() or viewAllDepartments(). 
-All other functions work properly, and I am still working on fixing these issues, and will update this application when I have solved the issue.
+[Link to Video](https://drive.google.com/file/d/1jVkL9ka6AgfhIupa5zb5gjJGS8ihVTRi/view)
+[Link to the GitHub Repository](https://marikadicarlo.github.io/employee-data-tracker/)
 
 ## Questions
 Contact me with any questions at <mdicarlo19@yahoo.com> or [visit my GitHub page](https://github.com/marikadicarlo)

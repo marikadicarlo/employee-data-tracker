@@ -6,7 +6,7 @@ const table = require("console.table");
 const inquierer = require("inquirer");
 
 // Express Middleware
-app.use(express.urlencoded({ extended: false}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Connect to SQL database
@@ -110,7 +110,6 @@ const viewAllEmployees = () => {
   );
 };
 
-
 // View All Roles function
 const viewAllRoles = () => {
   //Connect to the Query
@@ -146,11 +145,6 @@ const viewAllDepartments = () => {
     }
   );
 };
-
-
-
-
-
 
 
 // Add Employee function
